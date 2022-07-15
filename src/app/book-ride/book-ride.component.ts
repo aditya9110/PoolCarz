@@ -8,12 +8,13 @@ import { HoverDirectiveDirective } from '../hover-directive.directive';
 })
 export class BookRideComponent implements OnInit {
   public rides = [
-    {startPoint:"Kalyan", endPoint:"Office", seatsAvailable:"2"},
-    {startPoint:"Office", endPoint:"Dadar", seatsAvailable:"4"},
+    {startPoint:"Kalyan", endPoint:"Infosys", seatsAvailable:"2"},
+    {startPoint:"Infosys", endPoint:"Dadar", seatsAvailable:"4"},
     {startPoint:"Vashi", endPoint:"Thane", seatsAvailable:"3"},
-    {startPoint:"Office", endPoint:"Nariman Point", seatsAvailable:"5"}
+    {startPoint:"Infosys", endPoint:"Nariman Point", seatsAvailable:"5"}
   ]
   myMessage=""
+  public filterName! : string
   public showAllRides:boolean = false
 
   public showAllRidesBtn() {

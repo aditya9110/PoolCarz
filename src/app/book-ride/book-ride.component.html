@@ -16,10 +16,10 @@
 
         <div *ngIf="showAllRides" class="row text-center">
             <div class="d-flex justify-content-around">
-                <button (click)="showAllRidesBtn()"  type="submit" class="btn btn-success">Show All Rides</button>
-                <button  type="submit" class="btn btn-primary">To Office</button>
-                <button  type="submit" class="btn btn-primary">From Office</button>
-                <button  type="submit" class="btn btn-primary">Others</button>
+                <button (click)="showAllRidesBtn(); filterName='ALL'"  type="submit" class="btn btn-success">Show All Rides</button>
+                <button (click)="filterName='TO'" type="submit" class="btn btn-primary">To Office</button>
+                <button (click)="filterName='FROM'" type="submit" class="btn btn-primary">From Office</button>
+                <button (click)="filterName='OTHER'" type="submit" class="btn btn-primary">Others</button>
             </div>
             <h5>Select a ride</h5>
             <table class="table table-bordered table-sm">
@@ -31,7 +31,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let ride of rides" [appHoverDirective]="myMessage">
+                  <tr *ngFor="let ride of rides | ridefilter : filterName" appHoverDirective="">
                     <td>{{ride.startPoint}}</td>
                     <td>{{ride.endPoint}}</td>
                     <td>{{ride.seatsAvailable}}</td>

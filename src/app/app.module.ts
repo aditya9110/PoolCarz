@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { BookRideComponent } from './book-ride/book-ride.component';
 import { HoverDirectiveDirective } from './hover-directive.directive';
 import { RidefilterPipe } from './ridefilter.pipe';
+import { WriteDetailsComponent } from './write-details/write-details.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { RidefilterPipe } from './ridefilter.pipe';
     LoginComponent,
     BookRideComponent,
     HoverDirectiveDirective,
-    RidefilterPipe
+    RidefilterPipe,
+    WriteDetailsComponent
   ],
   imports: [
     BrowserModule,
