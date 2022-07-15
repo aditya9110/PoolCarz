@@ -16,13 +16,14 @@
 
         <div *ngIf="showAllRides" class="row text-center">
             <div class="d-flex justify-content-around">
-                <button (click)="showAllRidesBtn(); filterName='ALL'"  type="submit" class="btn btn-success">Show All Rides</button>
-                <button (click)="filterName='TO'" type="submit" class="btn btn-primary">To Office</button>
-                <button (click)="filterName='FROM'" type="submit" class="btn btn-primary">From Office</button>
-                <button (click)="filterName='OTHER'" type="submit" class="btn btn-primary">Others</button>
+                <button [disabled]="writeDetailsComponent.booked" (click)="showAllRidesBtn(); filterName='ALL'"  type="submit" class="btn btn-success">Show All Rides</button>
+                <button *ngIf="!writeDetailsComponent.booked" (click)="filterName='TO'" type="submit" class="btn btn-primary">To Office</button>
+                <button *ngIf="!writeDetailsComponent.booked" (click)="filterName='FROM'" type="submit" class="btn btn-primary">From Office</button>
+                <button *ngIf="!writeDetailsComponent.booked" (click)="filterName='OTHER'" type="submit" class="btn btn-primary">Others</button>
             </div>
-            <h5>Select a ride</h5>
-            <table class="table table-bordered table-sm">
+            
+            <h5 *ngIf="!writeDetailsComponent.booked" class="pt-3">Select a ride</h5>
+            <table *ngIf="!writeDetailsComponent.booked" class="table table-bordered table-sm">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">Start Point</th>
@@ -31,7 +32,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let ride of rides | ridefilter : filterName" appHoverDirective="">
+                  <tr (click)="carDetails = ride; childCompo = true" *ngFor="let ride of rides | ridefilter : filterName" appHoverDirective="">
                     <td>{{ride.startPoint}}</td>
                     <td>{{ride.endPoint}}</td>
                     <td>{{ride.seatsAvailable}}</td>
@@ -42,6 +43,8 @@
                 <button type="submit" class="btn btn-primary w-25">Offer A Ride</button>
             </div>
         </div>
+        <br>
+        <app-write-details [hidden]="!childCompo" [details]="carDetails"></app-write-details>
       </div>
     </div>
   </div>
