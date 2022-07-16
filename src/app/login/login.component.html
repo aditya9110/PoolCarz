@@ -3,27 +3,28 @@
     <div *ngIf="!auth" class="card-header bg-info text-white">Login</div>
     <div *ngIf="auth" class="card-header bg-info text-white">Welcome</div>
      <div *ngIf="!auth" class="card-body border border-primary">
-
-      <div class="form-group row">
-        <label for="username" class="col-sm-3 col-form-label">Username</label>
-        <div class="col-sm-9">
-          <input [(ngModel)]="username" type="email" class="form-control" id="username">
+      <form>
+        <div class="form-group row">
+          <label for="username" class="col-sm-3 col-form-label">Username</label>
+          <div class="col-sm-9">
+            <input name="username" [(ngModel)]="username" type="email" class="form-control" id="username">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="password" class="col-sm-3 col-form-label">Password</label>
-        <div class="col-sm-9">
-          <input [(ngModel)]="password" type="password" class="form-control" id="password">
+        <div class="form-group row">
+          <label for="password" class="col-sm-3 col-form-label">Password</label>
+          <div class="col-sm-9">
+            <input name="password" [(ngModel)]="password" type="password" class="form-control" id="password">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-3">
-          <button (click)="validate()" type="submit" class="btn btn-primary">Login</button>
+        <div class="form-group row">
+          <div class="col-sm-3">
+            <button (click)="validate()" type="submit" class="btn btn-primary">Login</button>
+          </div>
+          <div *ngIf="isSubmit" class="col-sm-9">
+            <p>Wrong Credentials!!</p>
+          </div>
         </div>
-        <div *ngIf="isSubmit" class="col-sm-9">
-          <p>Wrong Credentials!!</p>
-        </div>
-      </div>
+      </form>
 
     </div>
     <div *ngIf="auth" class="card-body border border-primary">
