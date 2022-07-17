@@ -1,4 +1,4 @@
-<div class="container-fluid login-style">
+<div class="container-fluid login-style center">
     <div class="card card-primary" style="width: 40rem;">
       <div class="card-header bg-info text-white text-center"><h3>Book Ride</h3></div>
        <div class="card-body border border-primary">
@@ -16,14 +16,14 @@
 
         <div *ngIf="showAllRides" class="row text-center">
             <div class="d-flex justify-content-around">
-                <button [disabled]="writeDetailsComponent.booked" (click)="showAllRidesBtn(); filterName='ALL'"  type="submit" class="btn btn-success">Show All Rides</button>
-                <button *ngIf="!writeDetailsComponent.booked" (click)="filterName='TO'" type="submit" class="btn btn-primary">To Office</button>
-                <button *ngIf="!writeDetailsComponent.booked" (click)="filterName='FROM'" type="submit" class="btn btn-primary">From Office</button>
-                <button *ngIf="!writeDetailsComponent.booked" (click)="filterName='OTHER'" type="submit" class="btn btn-primary">Others</button>
+                <button [disabled]="rideDetailsComponent.booked" (click)="showAllRidesBtn(); filterName='ALL'"  type="submit" class="btn btn-success">Show All Rides</button>
+                <button *ngIf="!rideDetailsComponent.booked" (click)="filterName='TO'" type="submit" class="btn btn-primary">To Office</button>
+                <button *ngIf="!rideDetailsComponent.booked" (click)="filterName='FROM'" type="submit" class="btn btn-primary">From Office</button>
+                <button *ngIf="!rideDetailsComponent.booked" (click)="filterName='OTHER'" type="submit" class="btn btn-primary">Others</button>
             </div>
             
-            <h5 *ngIf="!writeDetailsComponent.booked" class="pt-3">Select a ride</h5>
-            <table *ngIf="!writeDetailsComponent.booked" class="table table-bordered table-sm">
+            <h5 *ngIf="!rideDetailsComponent.booked" class="pt-3">Select a ride</h5>
+            <table *ngIf="!rideDetailsComponent.booked" class="table table-bordered table-sm">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">Start Point</th>
@@ -32,19 +32,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr (click)="carDetails = ride; childCompo = true" *ngFor="let ride of rides | ridefilter : filterName" appHoverDirective="">
+                  <tr (click)="carDetails = ride; childCompo = true" *ngFor="let ride of rides | ridefilter : filterName" appHoverDirective>
                     <td>{{ride.startPoint}}</td>
                     <td>{{ride.endPoint}}</td>
                     <td>{{ride.seatsAvailable}}</td>
                   </tr>
                 </tbody>
             </table>
-            <div class="text-center">
+            <div class="text-center pt-3">
                 <button type="submit" class="btn btn-primary w-25">Offer A Ride</button>
             </div>
         </div>
         <br>
-        <app-write-details [hidden]="!childCompo" [details]="carDetails"></app-write-details>
+        <app-ride-details [hidden]="!childCompo || !showAllRides" [details]="carDetails"></app-ride-details>
       </div>
     </div>
   </div>

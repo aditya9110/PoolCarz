@@ -1,0 +1,62 @@
+<div class="container ">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 border border-primary">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    
+                <div class="form-group">
+                    <label for="firstname">Name:</label>
+                    <input type="text" formControlName="firstName" name="" id="" class="form-control">
+                    <div *ngIf="registerForm.controls.firstName.errors" class="alert alert-danger">
+                        Name field is invalid.
+                        <p *ngIf="registerForm.controls.firstName.errors?.required">
+                            This field is required!
+                        </p>                
+                    </div> 
+                </div>
+    
+                <div class="form-group">
+                    <label for="strtloc">Start Location</label>
+                    <input type="text"formControlName="strtloc" name="" id="" class="form-control">
+                    <div *ngIf="registerForm.controls.strtloc.errors" class="alert alert-danger">
+                        field is invalid.
+                        <p *ngIf="registerForm.controls.strtloc.errors?.required">
+                            This field is required!
+                        </p>                
+                    </div> 
+                </div>
+                
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" formControlName="destination" name="" id="" class="form-control">
+                    <p *ngIf="registerForm.controls.destination.errors?.required"class="alert alert-danger">
+                        This field is required!
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label for="car">Car</label>
+                    <input type="text"formControlName="car" name="" id="" class="form-control">
+                    <div *ngIf="registerForm.controls.car.errors" class="alert alert-danger">
+                        Select Car!
+                        <p *ngIf="registerForm.controls.car.errors?.required">
+                            This field is required!
+                        </p>                
+                    </div> 
+                </div>
+
+                <div class="form-group">
+                    <label for="seats">Seat Available</label>
+                    <input type="number"formControlName="seat" name="" id="" class="form-control">
+                    <p *ngIf="registerForm.controls.seat.errors?.required" class="alert alert-danger">
+                        Number should be less than 8!!
+                    </p>
+                </div>
+                <br>
+                <div class="form-group">
+                    <button class="btn btn-primary me-1">Submit</button>
+                    <button class="btn btn-primary">Go Back</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

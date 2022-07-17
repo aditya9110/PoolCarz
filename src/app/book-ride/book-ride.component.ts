@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { HoverDirectiveDirective } from '../hover-directive.directive';
-import { WriteDetailsComponent } from '../write-details/write-details.component';
+import { RideDetailsComponent } from '../ride-details/ride-details.component';
 
 @Component({
   selector: 'app-book-ride',
@@ -23,10 +22,10 @@ export class BookRideComponent implements OnInit {
 
   public childCompo : boolean = false
 
-  @ViewChild(WriteDetailsComponent) writeDetailsComponent! : WriteDetailsComponent
+  @ViewChild(RideDetailsComponent) rideDetailsComponent! : RideDetailsComponent
 
   public showAllRidesBtn() {
-    this.showAllRides = this.showAllRides ? false : true
+    this.showAllRides = !this.showAllRides
   }
 
   constructor() { }
