@@ -1,60 +1,50 @@
-<div class="container ">
-    <div class="row">
-        <div class="col-md-6 offset-md-3 border border-primary">
-            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    
-                <div class="form-group">
-                    <label for="firstname">Name:</label>
-                    <input type="text" formControlName="firstName" name="" id="" class="form-control">
-                    <div *ngIf="registerForm.controls.firstName.errors" class="alert alert-danger">
-                        Name field is invalid.
-                        <p *ngIf="registerForm.controls.firstName.errors?.required">
-                            This field is required!
-                        </p>                
-                    </div> 
-                </div>
-    
-                <div class="form-group">
-                    <label for="strtloc">Start Location</label>
-                    <input type="text"formControlName="strtloc" name="" id="" class="form-control">
-                    <div *ngIf="registerForm.controls.strtloc.errors" class="alert alert-danger">
-                        field is invalid.
-                        <p *ngIf="registerForm.controls.strtloc.errors?.required">
-                            This field is required!
-                        </p>                
-                    </div> 
-                </div>
-                
-                <div class="form-group">
-                    <label for="destination">Destination</label>
-                    <input type="text" formControlName="destination" name="" id="" class="form-control">
-                    <p *ngIf="registerForm.controls.destination.errors?.required"class="alert alert-danger">
-                        This field is required!
-                    </p>
-                </div>
+<div class="container-fluid login-style">
+    <div class="card card-primary" style="width: 40rem;">
+        <div class="card-header bg-info text-white">Offer Ride</div>
+        <div class="card-body border border-primary">
 
-                <div class="form-group">
-                    <label for="car">Car</label>
-                    <input type="text"formControlName="car" name="" id="" class="form-control">
-                    <div *ngIf="registerForm.controls.car.errors" class="alert alert-danger">
-                        Select Car!
-                        <p *ngIf="registerForm.controls.car.errors?.required">
-                            This field is required!
-                        </p>                
-                    </div> 
+            <form [formGroup]="offerRideForm" (ngSubmit)="onSubmit()">
+                {{offerRideForm.value | json}}
+                <div class="form-group row">
+                    <label for="username" class="col-sm-3 col-form-label">Name</label>
+                    <div class="col-sm-9">
+                      <input [class.is-invalid]="firstName.invalid && firstName.touched" formControlName="firstName" type="text" class="form-control">
+                      <small [class.d-none]="firstName.valid || firstName.untouched" class="text-danger">Name is required</small>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="seats">Seat Available</label>
-                    <input type="number"formControlName="seat" name="" id="" class="form-control">
-                    <p *ngIf="registerForm.controls.seat.errors?.required" class="alert alert-danger">
-                        Number should be less than 8!!
-                    </p>
+                <div class="form-group row">
+                    <label for="startLoc" class="col-sm-3 col-form-label">Start Location</label>
+                    <div class="col-sm-9">
+                      <input [class.is-invalid]="startLoc.invalid && startLoc.touched" formControlName="startLoc" type="text" class="form-control">
+                      <small [class.d-none]="startLoc.valid || startLoc.untouched" class="text-danger">Start Location is required</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="destination" class="col-sm-3 col-form-label">Destination</label>
+                    <div class="col-sm-9">
+                      <input [class.is-invalid]="destination.invalid && destination.touched" formControlName="destination" type="text" class="form-control">
+                      <small [class.d-none]="destination.valid || destination.untouched" class="text-danger">Destination is required</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="car" class="col-sm-3 col-form-label">Car</label>
+                    <div class="col-sm-9">
+                      <input [class.is-invalid]="car.invalid && car.touched" formControlName="car" type="text" class="form-control">
+                      <small [class.d-none]="car.valid || car.untouched" class="text-danger">Car name is required</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="seat" class="col-sm-3 col-form-label">Seat</label>
+                    <div class="col-sm-9">
+                      <input [class.is-invalid]="seat.invalid && seat.touched" formControlName="seat" type="number" class="form-control">
+                      <small [class.d-none]="seat.valid || seat.untouched" class="text-danger">Seat is required</small>
+                    </div>
                 </div>
                 <br>
+                
                 <div class="form-group">
-                    <button class="btn btn-primary me-1">Submit</button>
-                    <button class="btn btn-primary">Go Back</button>
+                    <button [disabled]="offerRideForm.invalid" class="btn btn-primary me-1">Submit</button>
+                    <button (click)="backBtn()" class="btn btn-primary" type="button">Go Back</button>
                 </div>
             </form>
         </div>

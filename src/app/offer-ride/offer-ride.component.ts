@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RestServiceService } from '../rest-service.service';
 
 @Component({
   selector: 'app-offer-ride',
@@ -7,27 +9,49 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./offer-ride.component.css']
 })
 export class OfferRideComponent implements OnInit {
-  registerForm!:FormGroup
+  offerRideForm!:FormGroup
   title = 'fromValidation';
   submitted=false;
 
-  constructor(private formBuilder:FormBuilder){}
-    ngOnInit(){
-      //validations
-      this.registerForm=this.formBuilder.group({
-        firstName:['',Validators.required],
-        strtloc:['',Validators.required],
-        destination:['',Validators.required],
-        car:['',Validators.required],
-        seat:['',Validators.required]
-       });
-      
-      }
-      onSubmit(){
-        this.submitted=true
-        if(this.registerForm.invalid){
-          return
-        }
-        alert("Success");
-      }
+  get firstName() {
+    return this.offerRideForm.controls['firstName']
+  }
+  get startLoc() {
+    return this.offerRideForm.controls['startLoc']
+  }
+  get destination() {
+    return this.offerRideForm.controls['destination']
+  }
+  get car() {
+    return this.offerRideForm.controls['car']
+  }
+  get seat() {
+    return this.offerRideForm.controls['seat']
+  }
+
+  constructor(private formBuilder:FormBuilder, 
+              private router: Router, 
+              private restService: RestServiceService){}
+  ngOnInit(){
+    this.offerRideForm=this.formBuilder.group({
+      firstName:['',Validators.required],
+      startLoc:['',Validators.required],
+      destination:['',Validators.required],
+      car:['',Validators.required],
+      seat:['',Validators.required]
+      });
+
+  }
+
+  onSubmit(){
+    this.submitted=true
+    if(this.offerRideForm.invalid){
+      return
+    }
+    alert("Success");
+  }
+
+  backBtn() {
+    this.router.navigate(['/book-ride'])
+  }
 }

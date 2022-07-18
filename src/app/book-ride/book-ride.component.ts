@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { RestServiceService } from '../rest-service.service';
 import { RideDetailsComponent } from '../ride-details/ride-details.component';
+
 
 @Component({
   selector: 'app-book-ride',
@@ -7,14 +10,8 @@ import { RideDetailsComponent } from '../ride-details/ride-details.component';
   styleUrls: ['./book-ride.component.css']
 })
 export class BookRideComponent implements OnInit {
-  public rides = [
-    {id:'1', name:'Raj', car:'BMW', startPoint:"Kalyan", endPoint:"Infosys", seatsAvailable:"2"},
-    {id:'2', name:'Akash', car:'Audi',startPoint:"Infosys", endPoint:"Dadar", seatsAvailable:"4"},
-    {id:'3', name:'Om', car:'Porsche',startPoint:"Vashi", endPoint:"Thane", seatsAvailable:"3"},
-    {id:'4', name:'Adi', car:'Lamborgini',startPoint:"Infosys", endPoint:"Nariman Point", seatsAvailable:"5"}
-  ]
-
-  public carDetails : any = {id:'3', name:'Om', car:'Porsche',startPoint:"Vashi", endPoint:"Thane", seatsAvailable:"3"}
+  public rides! : any
+  public carDetails : any = [{id:'3', name:'Om', car:'Porsche',startPoint:"Vashi", endPoint:"Thane", seatsAvailable:"3"}]
 
   myMessage=""
   public filterName! : string
@@ -28,9 +25,19 @@ export class BookRideComponent implements OnInit {
     this.showAllRides = !this.showAllRides
   }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  public offerRideBtn() {
+    this.router.navigate(['/offer-ride'])
   }
 
+  constructor(private router: Router,
+              private restService: RestServiceService) { }
+
+  ngOnInit(): void {
+    this.restService.getRideData().subscribe(data => this.rides = data)
+  }
+
+  getRideClone(ridedata:any[]) {
+    ridedata.forEach(data=> this.rides.push(data))
+  }
+  
 }

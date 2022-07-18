@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RestServiceService } from '../rest-service.service';
 
 @Component({
   selector: 'app-login',
@@ -7,21 +10,49 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  public username = ''
-  public password = ''
   public auth:boolean = false
   public isSubmit:boolean = false
+  invalidCredentialMsg! : string
 
   public validate() {
+    const uname = this.loginForm.value.username;
+    const pwd = this.loginForm.value.password;
+    this.restService
+      .isUserAuthenticated(uname, pwd)
+      .subscribe({next:(authenticated) => {
+        if (authenticated) {
+          this.router.navigate(['/book-ride']);
+        } else {
+          this.invalidCredentialMsg = 'Invalid Credentials. Try again.';
+        }
+      }});
     this.isSubmit = true
-    if(this.username=='aditya' && this.password=='pass') {
+    if(this.username.value == 'aditya' && this.password.value == 'pass') {
       this.auth = true
+      this.router.navigate(['/book-ride'])
     }
   }
 
-  constructor() { }
+  get username() {
+    return this.loginForm.controls['username']
+  }
+
+  get password() {
+    return this.loginForm.controls['password']
+  }
+
+  loginForm!:FormGroup
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private restService: RestServiceService) { }
 
   ngOnInit(): void {
+    
+
+    this.loginForm = this.formBuilder.group({
+      username:['', Validators.required],
+      password:['', Validators.required]
+   });
   }
 
 }

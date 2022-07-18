@@ -10,6 +10,8 @@ import { HoverDirectiveDirective } from './hover-directive.directive';
 import { RidefilterPipe } from './ridefilter.pipe';
 import { RideDetailsComponent } from './ride-details/ride-details.component';
 import { OfferRideComponent } from './offer-ride/offer-ride.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RestServiceService } from './rest-service.service';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,10 @@ import { OfferRideComponent } from './offer-ride/offer-ride.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [RestServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
