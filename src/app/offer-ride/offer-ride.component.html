@@ -38,7 +38,7 @@
                     <label for="seat" class="col-sm-3 col-form-label">Seat</label>
                     <div class="col-sm-9">
                       <input [class.is-invalid]="seat.invalid && seat.touched" formControlName="seat" type="number" class="form-control">
-                      <small [class.d-none]="seat.valid || seat.untouched" class="text-danger">Seat is required</small>
+                      <small [class.d-none]="seat.valid || seat.untouched" class="text-danger">{{ seat.errors?.['seatInvalid'].message }}</small>
                     </div>
                 </div>
                 <br>

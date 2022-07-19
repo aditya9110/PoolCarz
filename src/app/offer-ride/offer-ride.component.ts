@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RestServiceService } from '../rest-service.service';
 
@@ -38,11 +38,17 @@ export class OfferRideComponent implements OnInit {
       startLoc:['',Validators.required],
       destination:['',Validators.required],
       car:['',Validators.required],
-      seat:['',Validators.required]
+      seat:['',[Validators.required, this.validateSeat]]
       });
     
   }
-
+  validateSeat(f: FormControl) : any {
+     return (f.value > 0 && f.value < 9) ? null : {
+      seatInvalid: {
+        message: 'Seats should be between 1 to 8'
+      }
+     }
+  }
   onSubmit(){
     // console.log(this.offerRideForm.value)
     // this.restService.ride.subscribe({next: (value) => console.log(value)})
