@@ -40,15 +40,15 @@ export class OfferRideComponent implements OnInit {
       car:['',Validators.required],
       seat:['',Validators.required]
       });
-
+    
   }
 
   onSubmit(){
-    this.submitted=true
-    if(this.offerRideForm.invalid){
-      return
-    }
-    alert("Success");
+    // console.log(this.offerRideForm.value)
+    // this.restService.ride.subscribe({next: (value) => console.log(value)})
+    this.restService.addRideDetail(this.offerRideForm.value).subscribe({next: (value) => console.log(value)})
+
+  
   }
 
   backBtn() {

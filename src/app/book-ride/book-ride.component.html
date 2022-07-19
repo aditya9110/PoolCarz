@@ -1,3 +1,4 @@
+<div class="center">
 <div class="container-fluid login-style center">
     <div class="card card-primary" style="width: 40rem;">
       <div class="card-header bg-info text-white text-center"><h3>Book Ride</h3></div>
@@ -32,7 +33,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr (click)="carDetails = ride; childCompo = true" *ngFor="let ride of rides | ridefilter : filterName" appHoverDirective>
+                  <tr (click)="rideDetailsComponent.showError = false; carDetails = ride; childCompo = true" *ngFor="let ride of rides | ridefilter : filterName" appHoverDirective>
                     <td>{{ride.startPoint}}</td>
                     <td>{{ride.endPoint}}</td>
                     <td>{{ride.seatsAvailable}}</td>
@@ -48,3 +49,4 @@
       </div>
     </div>
   </div>
+</div>

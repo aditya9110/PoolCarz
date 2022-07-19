@@ -29,7 +29,10 @@
     </table>
     <h4 *ngIf="booked">Booking Done!! Your Booking Id is {{details.id}}</h4>
     <div class="text-center">
-        <button *ngIf="!booked" (click)="booked = !booked" type="submit" class="btn btn-primary w-25">Book</button>
+        <small *ngIf="showError" class="text-danger">'Cannot book your ride!'</small>
+    </div>
+    <div class="text-center">
+        <button *ngIf="!booked" (click)="bookRide()" type="submit" class="btn btn-primary w-25">Book</button>
         <button *ngIf="booked" (click)="booked = !booked" type="submit" class="btn btn-danger w-25">Cancel Ride</button>
     </div>
 </div>

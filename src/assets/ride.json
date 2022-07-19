@@ -2,5 +2,5 @@
     {"id":1, "name":"Raj", "car":"BMW", "startPoint":"Kalyan", "endPoint":"Infosys", "seatsAvailable":2},
     {"id":2, "name":"Akash", "car":"Audi","startPoint":"Infosys", "endPoint":"Dadar", "seatsAvailable":4},
     {"id":3, "name":"Om", "car":"Porsche","startPoint":"Vashi", "endPoint":"Thane", "seatsAvailable":3},
-    {"id":4, "name":"Adi", "car":"Lamborgini","startPoint":"Infosys", "endPoint":"Nariman Point", "seatsAvailable":5}
+    {"id":4, "name":"admin", "car":"Lamborgini","startPoint":"Infosys", "endPoint":"Nariman Point", "seatsAvailable":5}
 ]

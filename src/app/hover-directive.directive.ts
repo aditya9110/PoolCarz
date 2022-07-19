@@ -7,10 +7,6 @@ export class HoverDirectiveDirective {
     renderer.setStyle(el.nativeElement, 'cursor', 'pointer');
   }
 
-  // @HostListener('click') onMouseClick() {
-  //   this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', 'rgba(57,192,237, 0.8)');
-  // }
-
   @HostListener('mouseenter') onMouseEnter() {
     this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', 'rgba(57,192,237, 0.3)');
   }

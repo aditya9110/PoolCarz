@@ -10,8 +10,8 @@ import { RideDetailsComponent } from '../ride-details/ride-details.component';
   styleUrls: ['./book-ride.component.css']
 })
 export class BookRideComponent implements OnInit {
-  public rides! : any
-  public carDetails : any = [{id:'3', name:'Om', car:'Porsche',startPoint:"Vashi", endPoint:"Thane", seatsAvailable:"3"}]
+  public rides : any = []
+  public carDetails : any = []
 
   myMessage=""
   public filterName! : string
@@ -33,11 +33,12 @@ export class BookRideComponent implements OnInit {
               private restService: RestServiceService) { }
 
   ngOnInit(): void {
-    this.restService.getRideData().subscribe(data => this.rides = data)
+    this.restService.getRideData().subscribe({next:(value: any) => this.rides = value})
   }
-
-  getRideClone(ridedata:any[]) {
-    ridedata.forEach(data=> this.rides.push(data))
-  }
+  
+  // getRideClone() {
+  //   this.rides.push(this.restService.ridessss)
+  //   console.log(this.rides)
+  // }
   
 }

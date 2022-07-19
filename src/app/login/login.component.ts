@@ -21,16 +21,14 @@ export class LoginComponent implements OnInit {
       .isUserAuthenticated(uname, pwd)
       .subscribe({next:(authenticated) => {
         if (authenticated) {
+          localStorage.setItem('username', uname)
           this.router.navigate(['/book-ride']);
         } else {
           this.invalidCredentialMsg = 'Invalid Credentials. Try again.';
         }
       }});
     this.isSubmit = true
-    if(this.username.value == 'aditya' && this.password.value == 'pass') {
-      this.auth = true
-      this.router.navigate(['/book-ride'])
-    }
+    
   }
 
   get username() {
