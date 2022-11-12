@@ -32,8 +32,10 @@ export class BookRideComponent implements OnInit {
   constructor(private router: Router,
               private restService: RestServiceService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.restService.getRideData().subscribe({next:(value: any) => this.rides = value})
+    // this.rides = await this.restService.gett()
+    // console.log(this.rides)
   }
   
   // getRideClone() {
