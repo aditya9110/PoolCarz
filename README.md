@@ -1,6 +1,37 @@
-# PoolCarz
+# PoolCarz Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
+PoolCarz is a cab booking app with functionalities to book ride, filter based on parameters, cancel ride and offer ride to the customers. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3. 
+
+## Snapshots
+
+Login Page
+
+![](Screenshots/1%20Login.png)
+
+Home Page
+
+![](Screenshots/2%20Home.png)
+
+Book Ride
+
+![](Screenshots/3%20Book%20Ride.png)
+
+Filter Rides
+
+![](Screenshots/4%20Filter%20Rides.png)
+
+Confirm Ride
+
+![](Screenshots/5%20Confirm%20Ride.png)
+
+Cancel Ride
+
+![](Screenshots/6%20Cancel%20Ride.png)
+
+Offer Ride Form
+
+![](Screenshots/7%20Offer%20Ride%20Form.png)
+
 
 ## Development server
 
